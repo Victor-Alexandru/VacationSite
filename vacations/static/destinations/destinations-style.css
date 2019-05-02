@@ -1,0 +1,26 @@
+.main-part {
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+#result {
+    text-align: center;
+}
+
+.items-table{
+    min-width: 610px;
+}
+.button-div{
+    min-width: 650px;
+}
+
+#previous-button{
+    float: left;
+}
+#next-button{
+    float: right;
+
+}
