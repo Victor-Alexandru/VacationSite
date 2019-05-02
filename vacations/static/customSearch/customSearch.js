@@ -5,7 +5,6 @@ $(document).ready(function () {
     function validateForm() {
         let cName = document.forms["customSearchForm"]["countryName"].value;
 
-        console.log(cName);
         if (!(cName)) {
             throw Error("Invalid country parameter")
         } else {
@@ -44,7 +43,7 @@ $(document).ready(function () {
             th3.appendChild(document.createTextNode('Description'));
 
             let th4 = document.createElement('th');
-            th4.appendChild(document.createTextNode('Daily Cost'));
+            th4.appendChild(document.createTextNode('Targets'));
 
 
             trh.appendChild(th);
@@ -75,8 +74,12 @@ $(document).ready(function () {
                 let td3 = document.createElement('td');
                 td3.appendChild(document.createTextNode(dataArray[i]["description"]));
 
+                pString = "";
+                for (let targetObj of dataArray[i]["targets"]) {
+                    pString += targetObj["targetName"] + ",";
+                }
                 let td4 = document.createElement('td');
-                td4.appendChild(document.createTextNode(dataArray[i]["costPerDay"]));
+                td4.appendChild(document.createTextNode(pString));
 
                 tr.appendChild(td);
                 tr.appendChild(td1);
@@ -134,7 +137,6 @@ $(document).ready(function () {
         if (start !== 0) {
             start = start - 4;
             end = end - 4;
-            console.log(start, end);
             getData(start, end);
         }
 
@@ -144,7 +146,6 @@ $(document).ready(function () {
         if ($("tr").length >= 5) {
             start = start + 4;
             end = end + 4;
-            console.log(start, end);
             getData(start, end);
         }
 

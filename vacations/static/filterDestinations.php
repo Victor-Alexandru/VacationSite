@@ -35,6 +35,22 @@ if (isset($_POST["start"], $_POST["end"], $_POST["countryName"])) {
         $jsonDataItem['description'] = $row['description'];
         $jsonDataItem['costPerDay'] = $row['costPerDay'];
 
+        $jsonDataItemTargets = array();
+
+        $aux_cmd = "SELECT * FROM `target` WHERE destinationId =  " . $row['destinationId'];;
+
+        $aux_result = $conn->query($aux_cmd);
+
+        while ($aux_row = $aux_result->fetch_assoc()) {
+            $jsonDataItemTarget = array();
+            $jsonDataItemTarget['destinationId'] = $aux_row['destinationId'];
+            $jsonDataItemTarget['targetName'] = $aux_row['targetName'];
+            array_push($jsonDataItemTargets, $jsonDataItemTarget);
+
+        }
+
+        $jsonDataItem["targets"] = $jsonDataItemTargets;
+        
         array_push($jsonData, $jsonDataItem);
 
     }
